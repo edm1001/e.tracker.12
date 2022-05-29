@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS e.tracker.12;
+CREATE DATABASE e.tracker.12;
+USE e.tracker.12
