@@ -1,0 +1,23 @@
+{
+    "name": "e.tracker.12",
+    "version": "1.0.0",
+    "description": "Challenge 12: SQL Challenge: Employee Tracker",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/edm1001/e.tracker.12.git"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/edm1001/e.tracker.12/issues"
+    },
+    "dependencies": {
+        "console.table": "^0.10.0",
+        "express": "^4.17.1",
+        "inquirer": "^8.2.0",
+        "mysql2": "^2.3.3-rc.0"
+    }
+}

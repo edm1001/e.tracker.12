@@ -20,6 +20,7 @@ VALUES
 ('Samsung Products', '50000', 4)
 ('Shoes', '35000', 5)
 ('Clothes', '36000', 5)
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
 ('Edmer','Valencia', 2 ,NULL)
