@@ -94,7 +94,7 @@ const listMainOptions = [
   
   // All functions to use for manipulating MySQL database
   const addRole = async() => {
-    const result = await inquirer.prompt(addRoleOtions)
+    const result = await inquirer.prompt(addRolesOptions)
     const sql = `INSERT INTO role (title, salary, department_id)
     VALUES (?,?,?)`;
     const params = [result.title, result.salary, result.department];
