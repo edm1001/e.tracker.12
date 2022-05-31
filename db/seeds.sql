@@ -1,5 +1,5 @@
 -- this has pre packaged information to add on for the database
-INSERT INTO department ('name')
+INSERT INTO department (name)
 VALUES
 ('Managers')
 ('Team Leaders')
