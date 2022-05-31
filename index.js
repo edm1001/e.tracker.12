@@ -7,10 +7,10 @@ const db = require('./db/connection');
 
 //add question arrays
 // All Question Arrays
-const startMenuQuestion = [
+const listMainOptions = [
     {
       type: 'list',
-      name: 'startMenuQuestion',
+      name: 'listMainOptions',
       message: 'Choose an option below to get started',
       choices: [
         "Show all Roles",
@@ -24,7 +24,7 @@ const startMenuQuestion = [
     }
   ]
   
-  const addRoleQuestions = [
+  const addRolesOptions = [
     {
       type: 'input',
       name: 'title',
@@ -42,7 +42,7 @@ const startMenuQuestion = [
     }
   ]
   
-  const addDepartmentQuestion = [
+  const addDepartmentOption= [
     {
       type: 'input',
       name: 'name',
@@ -51,7 +51,7 @@ const startMenuQuestion = [
   ]
   
   
-  const addEmployeeQuestions = [
+  const addEmployeesOptions = [
     {
       type: 'input',
       name: 'first_name',
@@ -74,7 +74,7 @@ const startMenuQuestion = [
     }
   ]
   
-  const chooseEmployeeQuestion = [
+  const chooseEmployeeOption = [
     {
       type: 'input',
       name: 'employee_id',
@@ -82,7 +82,7 @@ const startMenuQuestion = [
     },
   ]
   
-  const updateEmployeeRoleQuestion = [
+  const updateEmployeeRoles = [
     {
       type: 'input',
       name: 'role_id',
@@ -94,7 +94,7 @@ const startMenuQuestion = [
   
   // All functions to use for manipulating MySQL database
   const addRole = async() => {
-    const result = await inquirer.prompt(addRoleQuestions)
+    const result = await inquirer.prompt(addRoleOtions)
     const sql = `INSERT INTO role (title, salary, department_id)
     VALUES (?,?,?)`;
     const params = [result.title, result.salary, result.department];
@@ -107,7 +107,7 @@ const startMenuQuestion = [
   }
   
   const addDepartment = async() => {
-    const result = await inquirer.prompt(addDepartmentQuestion)
+    const result = await inquirer.prompt(addDepartmentOption)
     const sql = `INSERT INTO department (name)
     VALUES (?)`;
     const params = [result.name];
@@ -120,7 +120,7 @@ const startMenuQuestion = [
   }
   
   const addEmployee = async() => {
-    const result = await inquirer.prompt(addEmployeeQuestions)
+    const result = await inquirer.prompt(addEmployeesOptions)
     const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
     VALUES (?,?,?,?)`;
     const params = [result.first_name, result.last_name, result.role_id, result.manager_id];
@@ -133,18 +133,18 @@ const startMenuQuestion = [
   }
   
   const chooseEmployee = async() => {
-    const result = await inquirer.prompt(chooseEmployeeQuestion);
+    const result = await inquirer.prompt(chooseEmployeeOption);
   
     db.query('SELECT role.id, role.title FROM role', function (err, results) {
             console.log("");
             console.table(results);
           });
     
-    updateEmployeeRole(result.employee_id);
+    updateEmployee(result.employee_id);
   }
   
-  const updateEmployeeRole = async(employeeID) => {
-    const result = await inquirer.prompt(updateEmployeeRoleQuestion)
+  const updateEmployee = async(employeeID) => {
+    const result = await inquirer.prompt(updateEmployeeRoles)
     const sql = `UPDATE employee SET role_id = ${result.role_id}
     WHERE id = ${employeeID}`;
   
@@ -158,9 +158,9 @@ const startMenuQuestion = [
   
   // startMenu function acts as switchboard for options to manipulate database
   const startMenu = async() => {
-    const result = await inquirer.prompt(startMenuQuestion)
+    const result = await inquirer.prompt(listMainOptions)
     .then(function(result) {
-      switch (result.startMenuQuestion) {
+      switch (result.listMainOptions) {
         case "Show all Roles":
           db.query('SELECT role.id, role.title, role.salary, department.name AS department_name FROM role LEFT JOIN department ON role.department_id = department.id', function (err, results) {
             console.log("");
